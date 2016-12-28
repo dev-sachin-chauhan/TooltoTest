@@ -9,6 +9,7 @@ import android.os.Environment;
  * Created by sachin_chauhan on 12/26/16.
  */
 public class SignedFileHierarchicalManager implements FileAccess {
+    private final static String TAG = "SignedFileHierarchicalManager";
 
     private final File SDOROOT;
     private final HashMap<FilePath,String> mPathFileHashMap = new HashMap<>();
