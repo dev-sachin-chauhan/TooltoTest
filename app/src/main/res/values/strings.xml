@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SecureDeveloperOptions</string>
+    <string name="chose_sdo">Choose SDO</string>
+    <string-array name="sdo_names">
+        <item>BASE</item>
+        <item>BASE_MOBILE</item>
+        <item>BASE_ENGINE</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
 </resources>

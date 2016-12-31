@@ -6,19 +6,17 @@ android {
 
     defaultConfig {
         applicationId "com.poc.securedeveloperoptions"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-    testOptions {
-        unitTests.returnDefaultValues = true
     }
 }
 
@@ -27,7 +25,22 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.2.0'
 
+    // https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk16
+    compile group: 'org.bouncycastle', name: 'bcprov-jdk16', version: '1.45'
+
     // Required for instrumented tests
-    androidTestCompile 'com.android.support:support-annotations:24.0.0'
+    androidTestCompile 'com.android.support:support-annotations:24.2.0'
     androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    // Optional -- Hamcrest library
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+    // Optional -- UI testing with Espresso
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // Optional -- UI testing with UI Automator
+    androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+
+
+    compile project(':sdolib')
 }
