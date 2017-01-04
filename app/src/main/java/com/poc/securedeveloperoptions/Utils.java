@@ -22,14 +22,13 @@ import android.content.Context;
  */
 public class Utils {
 
-    public void createPublicPrivateKeyFiles() {
-
+    Utils() {
+        Security.addProvider(new BouncyCastleProvider());
     }
 
     public PrivateKey getPrivateKeyFromResource(Context context) throws InvalidKeySpecException, NoSuchAlgorithmException, NoSuchProviderException {
         InputStream inputStream = context.getResources()
                 .openRawResource(context.getResources().getIdentifier("privatekey", "raw", context.getPackageName()));
-        ;
         byte[] buffer = new byte[8192];
         int bytesRead;
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -41,7 +40,6 @@ public class Utils {
             e.printStackTrace();
         }
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(output.toByteArray());
-        Security.addProvider(new BouncyCastleProvider());
         KeyFactory kf = KeyFactory.getInstance("DSA", "BC");
         return kf.generatePrivate(spec);
     }
@@ -60,7 +58,6 @@ public class Utils {
             e.printStackTrace();
         }
         X509EncodedKeySpec spec = new X509EncodedKeySpec(output.toByteArray());
-        Security.addProvider(new BouncyCastleProvider());
         KeyFactory kf = KeyFactory.getInstance("DSA", "BC");
         return kf.generatePublic(spec);
     }
