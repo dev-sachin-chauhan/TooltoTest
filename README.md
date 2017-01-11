@@ -12,4 +12,3 @@ Using this tool developers can digitally sign their files to be injected in thei
 These digitally signed files can be can be place in pre-defined hierarchy specified below.
 
 Now developer just have to use the SDOlib apis to access the files.
-
